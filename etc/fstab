@@ -1,0 +1,6 @@
+# NetBSD /etc/fstab
+/dev/md0a 	/ 	ffs 	rw 	1 1
+
+kernfs 		/kern 	kernfs 	rw
+#ptyfs		/dev/pts ptyfs	rw
+procfs 		/proc 	procfs 	rw

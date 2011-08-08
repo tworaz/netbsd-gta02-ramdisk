@@ -1,0 +1,29 @@
+#	$NetBSD: mtree.common,v 1.9 2009/04/07 11:49:17 joerg Exp $
+
+/set				type=dir uname=root gname=wheel mode=0755
+
+.
+./bin
+./dev
+./dev/pts
+./etc
+./etc/powerd
+./etc/powerd/scripts
+./mnt
+./proc
+./root
+./kern
+./sbin
+./tmp				mode=01777
+./usr
+./usr/bin
+./usr/sbin
+./usr/libexec
+./usr/share
+./usr/share/misc
+./var
+./var/db
+./var/run
+./var/log
+./var/spool
+./var/spool/lock

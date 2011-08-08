@@ -1,0 +1,4 @@
+#!/bin/sh -
+
+echo "Sleep support not yet implemented!"
+exit 0
