@@ -14,26 +14,43 @@ echo -n "Configuring network interfaces: "
 ifconfig lo0 inet 127.0.0.1 && \
 route -q add -inet 127.0.0.1 -netmask 0xff000000 127.0.0.1 -reject && echo "Done"
 
-echo -n "Starting Power Daemon: "
+echo -n "Starting power daemon: "
 chmod +x /etc/powerd/scripts/*
 powerd -d &
 echo "Done"
 
-#echo "Connected USB devices:"
-#usbdevs -d
+echo -n "Starting wsmouse daemon: "
+wsmoused -n &
+echo "Done"
 
-#echo "Listing bluetooth devices:"
+echo "Performing functionality tests: "
+# Vibrator
+sysctl -w hw.gta02vib0.enable=1
+sleep 2
+sysctl -w hw.gta02vib0.enable=0
+# Red LED
+sysctl -w hw.gta02leds0.red=1
+sleep 2
+sysctl -w hw.gta02leds0.red=0
+# Orange LED
+sysctl -w hw.gta02leds0.orange=1
+sleep 2
+sysctl -w hw.gta02leds0.orange=0
+# Blue LED
+sysctl -w hw.gta02leds0.blue=1
+sleep 2
+sysctl -w hw.gta02leds0.blue=0
+
+echo "Connected USB devices:"
+usbdevs -d
+
+echo "Listing bluetooth devices:"
 #btdevctl -A
 #sysctl -a | grep ubt
-#btconfig -l
+btconfig -l
 
 echo "Drivers registered with envstat framework:"
 envstat -D
-
-echo "Performing functionality tests: "
-sysctl -w hw.gta02vib0.enable=1
-sleep 4
-sysctl -w hw.gta02vib0.enable=0
 
 echo -n "Current date is: "
 date

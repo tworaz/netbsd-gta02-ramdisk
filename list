@@ -68,6 +68,7 @@ PROG	usr/sbin/usbdevs
 PROG	usr/sbin/btconfig
 PROG	usr/sbin/btdevctl
 PROG	usr/sbin/powerd
+PROG	usr/sbin/wsmoused
 
 PROG    usr/libexec/getty
 
